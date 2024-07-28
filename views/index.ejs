@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosk Bot V1</title>
+</head>
+<body>
+    <main>
+        <h1>Welcome, your personal assistant awaits you 🤖...</h1>
+        <p>Setup takes less than 5 minutes to boost your productivity long term</p>
+        <div id="content">
+            <!-- Dynamic content will be rendered here -->
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+
+<script>
+    document.querySelectorAll('header a').forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const url = event.target.getAttribute('href');
+        loadContent(url);
+      });
+    });
+  
+    function loadContent(url) {
+      fetch(url)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('content').innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  </script>
+</html>
