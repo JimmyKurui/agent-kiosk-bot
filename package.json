@@ -1,4 +1,11 @@
 {
+  "name": "agent-kiosk-bot",
+  "description": "An open source bot that assists agents working in small shops or kiosks to efficiently process client requests and improve service delivery. It is ideal for high traffic and interactive environments where expansion is limited",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": ["mpesa, mtn, east africa, agent"],
+  "author": "Jimmy Chepkurui",
+  "license": "GNU",
   "scripts": {
     "dev": "nodemon app.js"
   },
@@ -6,5 +13,8 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.7"
   }
 }
