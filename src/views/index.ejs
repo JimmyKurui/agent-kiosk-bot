@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiosk Bot V1</title>
+    <link rel="stylesheet"href="/css/index.css">
+    <title>Kiosk Bot V1 | <%= title %></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body>
-    <main>
-        <h1>Welcome, your personal assistant awaits you 🤖...</h1>
+<body class="min-h-screen relative">
+    <main class="text-center">
+        <h1 class="text-red-300">Welcome, your personal assistant awaits you 🤖...</h1>
         <p>Setup takes less than 5 minutes to boost your productivity long term</p>
-        <div id="content">
-            <!-- Dynamic content will be rendered here -->
+        <div id="content" class="flex items-center justify-center my-14" style="height: 80vh;">
+          <div class="bg-gradient rounded-lg shadow-lg p-6 w-full max-w-md" style="height: inherit;">
+            <div class="flex space-x-14">
+              <button onclick="window.history.back();">Back</button>
+              <h2 class="text-center text-2xl font-bold text-white mb-4">Payment Options</h2>
+            </div>
+            <%- include('pages/'+page) %>
+          </div>
         </div>
     </main>
 
@@ -18,13 +26,16 @@
 </body>
 
 <script>
-    document.querySelectorAll('header a').forEach(link => {
+  $(document).ready(function() {
+
+    $('header a').forEach(link => {
       link.addEventListener('click', (event) => {
         event.preventDefault();
         const url = event.target.getAttribute('href');
         loadContent(url);
       });
     });
+  })
   
     function loadContent(url) {
       fetch(url)
@@ -36,5 +47,5 @@
           console.error('Error:', error);
         });
     }
-  </script>
+</script>
 </html>

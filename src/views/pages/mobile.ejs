@@ -1,0 +1,96 @@
+<div class="space-y-4 flex-col">
+     <!-- Channel Selection -->
+     <div class="flex space-x-10">
+        <label class="block text-white font-semibold mb-2">Select Method:</label>
+        <div class="flex items-center mb-4">
+            <input type="radio" id="bank" name="channel" value="bank" class="mr-2">
+            <label for="bank" class="text-white">Bank</label>
+        </div>
+        <div class="flex items-center mb-4">
+            <input type="radio" id="mobile" name="channel" value="mobile" class="mr-2" checked>
+            <label for="mobile" class="text-white">Mobile Number</label>
+        </div>
+    </div>
+    <!-- Bank Deposit Form -->
+    <form id="bank-form" method="POST" class="space-y-4 hidden">
+        <div>
+            <label for="bank-choice" class="block text-white font-semibold mb-2">Select Bank:</label>
+            <select id="bank-choice" name="bank" class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400">
+                <option value="equity">Equity Bank</option>
+                <option value="kcb">KCB (Kenya Commercial Bank)</option>
+                <option value="cooperative">Cooperative Bank</option>
+                <option value="ncba">NCBA</option>
+                <option value="standard">Standard Chartered</option>
+                <option value="diamond">Diamond Trust Bank</option>
+            </select>
+
+            <label for="account-number" class="block text-white font-semibold mb-2 mt-4">Bank Account Number:</label>
+            <input type="text" id="account-number" name="account_number" placeholder="Enter your bank account number" required
+                class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400">
+
+            <label for="account-holder" class="block text-white font-semibold mb-2 mt-4">Account Holder Name:</label>
+            <input type="text" id="account-holder" name="account_holder" placeholder="Enter your account holder name" required
+                class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400">
+
+            <label for="branch" class="block text-white font-semibold mb-2 mt-4">Branch Name (Optional):</label>
+            <input type="text" id="branch" name="branch" placeholder="Enter your bank branch (optional)" 
+                class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400">
+
+            <label for="deposit-amount-bank" class="block text-white font-semibold mb-2 mt-4">Amount to Deposit:</label>
+            <input type="number" id="deposit-amount-bank" name="amount" placeholder="Enter amount to deposit" required
+                class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400">
+        </div>
+
+        <button type="submit"
+            class="w-full bg-white text-lg font-semibold text-gray-800 rounded-lg shadow-md hover:bg-gray-100 transition duration-200 py-3">
+            Submit
+        </button>
+    </form>
+
+    <!-- Mobile Money Deposit Form -->
+    <form id="mobile-form" method="POST" class="space-y-4 hidden">
+        <div>
+            <label for="network-choice" class="block text-white font-semibold mb-2">Select Network:</label>
+            <select id="network-choice" name="network" class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400">
+                <option value="mpesa">M-Pesa</option>
+                <option value="airtel">Airtel Money</option>
+                <option value="tigo">Tigo Pesa</option>
+                <option value="orange">Orange Money</option>
+            </select>
+
+            <label for="mobile-number" class="block text-white font-semibold mb-2 mt-4">Mobile Number:</label>
+            <input type="text" id="mobile-number" name="mobile_number" placeholder="Enter your mobile number" required
+                class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400">
+
+            <label for="deposit-amount-mobile" class="block text-white font-semibold mb-2 mt-4">Amount to Deposit:</label>
+            <input type="number" id="deposit-amount-mobile" name="amount" placeholder="Enter amount to deposit" required
+                class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400">
+        </div>
+
+        <button type="submit"
+            class="w-full bg-white text-lg font-semibold text-gray-800 rounded-lg shadow-md hover:bg-gray-100 transition duration-200 py-3">
+            Submit
+        </button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#mobile').prop('checked', true);  // Check mobile by default
+        $('#mobile-form').removeClass('hidden');  // Show mobile form
+        $('#bank-form').addClass('hidden');
+
+        // Toggle between bank and mobile forms based on radio button choice
+        $('input[name="channel"]').on('change', function() {
+            const selectedMethod = $('input[name="channel"]:checked').val();
+            
+            if (selectedMethod === 'bank') {
+                $('#bank-form').removeClass('hidden');
+                $('#mobile-form').addClass('hidden');
+            } else if (selectedMethod === 'mobile') {
+                $('#mobile-form').removeClass('hidden');
+                $('#bank-form').addClass('hidden');
+            }
+        });
+    });
+</script>
