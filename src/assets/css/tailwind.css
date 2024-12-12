@@ -16,6 +16,11 @@ body {
   background-position: top left, bottom right;
   background-repeat: repeat; /* Repeat the images to fill the entire body */
   background-attachment: fixed; /* Fix the background while scrolling */
+  max-height: 100vh !important;
+}
+
+body * {
+  height: inherit;
 }
 
 footer {
