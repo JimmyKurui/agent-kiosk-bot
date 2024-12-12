@@ -2,27 +2,38 @@
   "name": "agent-kiosk-bot",
   "description": "An open source bot that assists agents working in small shops or kiosks to efficiently process client requests and improve service delivery. It is ideal for high traffic and interactive environments where expansion is limited",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "./src/app.ts",
   "keywords": [
     "mpesa, mtn, east africa, agent"
   ],
   "author": "Jimmy Chepkurui",
   "license": "GNU",
   "scripts": {
-    "build": "npx tsc",
-    "dev": "nodemon index.ts",
-    "start": "node index.ts"
+    "build:ts": "tsc",
+    "build:css": "npx tailwindcss -i src/assets/css/tailwind.css -o dist/public/css/index.css --minify",
+    "build": "npm run build:ts && npm run build:css",
+    "dev:ts": "ts-node-dev --respawn src/app.ts",
+    "dev:css": "npx tailwindcss -i src/assets/css/tailwind.css -o src/public/css/index.css --watch",
+    "dev": "concurrently \"npm run dev:ts\" \"npm run dev:css\"",
+    "start": "node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
-    "express": "^4.19.2",
-    "jquery": "^3.7.1"
+    "express": "^4.19.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^22.0.0",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^8.2.2",
+    "jquery": "^3.7.1",
+    "postcss": "^8.4.49",
     "tailwindcss": "^3.4.7",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.4"
   }
 }

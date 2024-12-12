@@ -1,0 +1,23 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+  background-image: 
+    /* linear-gradient(to bottom right, #f5f5f5, yellow), */
+    url("../images/ali-mkumbwa-5dFuO02OHh0-unsplash.jpg");
+  /* url('../images/pexels-photo-13317193.jpeg'); */
+  /* linear-gradient(to bottom right, red, yellow), */
+  /* linear-gradient(to bottom left, url('../images/ali-mkumbwa-5dFuO02OHh0-unsplash.jpg'), green); */
+  background-color: rgba(255, 255, 255, 0.6);
+  background-blend-mode: lighten;
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: top left, bottom right;
+  background-repeat: repeat; /* Repeat the images to fill the entire body */
+  background-attachment: fixed; /* Fix the background while scrolling */
+}
+
+footer {
+    background-color:  rgba(0,0,0,0.2);
+}
